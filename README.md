@@ -1,2 +1,3 @@
 # debug
-以后专门放兴起时敲下的代码、研究啥原理时敲下的代码等。
+
+Code Runner 是一个好插件，可以在 vscode 直接运行 js 文件，nice
