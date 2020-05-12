@@ -5,8 +5,7 @@
  * 
  */
 
-
-function throttle(fn, time) {
+function throttleForTimestamp(fn, time) {
     let lasteTime = 0
     let newArgs = Array.prototype.slice.call(arguments, 2)
     return function (e) {
@@ -17,14 +16,10 @@ function throttle(fn, time) {
     }
 }
 
-
-
-
 function handle(p1, p2, p3) {
-    console.log(new Date());
+    console.log(Math.random());
     console.log(p1, p2, p3);
     console.log(this);
 }
 
-
-window.addEventListener('mousemove', throttle(handle, 2000, 1, 2, 3));
+window.addEventListener('mousemove', throttleForTimestamp(handle, 2000, 1, 2, 3));
