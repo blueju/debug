@@ -1,12 +1,10 @@
 function myNew(fn) {
   let obj = new Object();
   obj.__proto__ = fn.prototype;
-
+  let constructor = Array.prototype.shift.call(arguments);
   // let args = Array.prototype.slice.call(arguments, 1);
-  let args = Array.from(arguments).slice(1);
-  console.log(args);
-
-  let res = fn.call(obj, args);
+  console.log(arguments);
+  let res = constructor.apply(obj, arguments);
   return typeof res === "object" ? res : obj;
 }
 
@@ -21,9 +19,9 @@ function myNew(fn) {
 
 function Person(name) {
   this.name = name;
-  return {
-    name: "Tom"
-  };
+  // return {
+  //   name: "Tom"
+  // };
 }
 // let tom = new Person("tom");
 // console.log(tom);

@@ -10,6 +10,7 @@
 Function.prototype.bind2 = function (context) {
   let fn = this;
   let bindArgs = Array.prototype.slice.call(arguments, 1);
+  // 或
   // let bindArgs = Array.from(arguments).slice(-1)[0];
   return function () {
     return fn.call(context, ...bindArgs);
