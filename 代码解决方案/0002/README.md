@@ -1,0 +1,1 @@
+把 var str = "cat dog fish" 的首字母大写，输出 Cat Dog Fish
