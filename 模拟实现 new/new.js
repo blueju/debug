@@ -1,29 +1,25 @@
 function myNew(fn) {
-  let obj = new Object();
+  const obj = new Object();
   obj.__proto__ = fn.prototype;
-  let constructor = Array.prototype.shift.call(arguments);
-  // let args = Array.prototype.slice.call(arguments, 1);
-  console.log(arguments);
-  let res = constructor.apply(obj, arguments);
+  const res = fn.apply(obj, [...arguments].slice(1));
   return typeof res === "object" ? res : obj;
 }
 
-// function objectFactory() {
-//   var obj = new Object(),
-//   Constructor = Array.prototype.shift.call(arguments);
-//   console.log(Constructor);
-//   obj.__proto__ = Constructor.prototype;
-//   var ret = Constructor.apply(obj, arguments);
-//   return typeof ret === "object" ? ret : obj;
-// }
-
-function Person(name) {
-  this.name = name;
-  // return {
-  //   name: "Tom"
-  // };
+function myNew2(fn) {
+  const obj = Object.create(fn.prototype);
+  const res = fn.apply(obj, [...arguments].slice(1));
+  return typeof res === "object" ? res : obj;
 }
-// let tom = new Person("tom");
-// console.log(tom);
-let Jerry = myNew(Person, "Jerry");
-console.log(Jerry);
+
+/* 以下是测试 */
+
+function Car(make, model, year) {
+  this.make = make;
+  this.model = model;
+  this.year = year;
+}
+
+const mycar = myNew(Car, "Eagle", "Talon TSi", 1993);
+const kenscar = myNew2(Car, "Nissan", "300ZX", 1992);
+console.log(mycar);
+console.log(kenscar);
